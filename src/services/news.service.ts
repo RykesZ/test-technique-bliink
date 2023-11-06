@@ -2,11 +2,13 @@ import axios, { AxiosResponse } from "axios";
 
 export default class NewsService {
     private endPoint: string | undefined;
-    private apiKey: string |undefined;
+    private apiKey: string | undefined;
+    private country: string | undefined;
 
     constructor() {
         this.endPoint = "https://newsapi.org/v2/top-headlines";
         this.apiKey = "f8560a280a574e3fbd2d1c657729870e";
+        this.country = "us"
 
         if (this.endPoint === undefined || this.apiKey === undefined) {
             throw new Error("Veuillez définir les variables d'environnement endPoint et apiKey.")
@@ -14,7 +16,7 @@ export default class NewsService {
     }
 
     async getNews(): Promise<AxiosResponse> {
-        const url = `${this.endPoint}?country=us&apiKey=${this.apiKey}`;
+        const url = `${this.endPoint}?country=${this.country}&apiKey=${this.apiKey}`;
         
         try {
             const response: AxiosResponse = await axios.get(url);

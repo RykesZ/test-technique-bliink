@@ -9,15 +9,21 @@
     z-index: 100;
     color: rgb(230, 230, 230);
     align-items: center;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
+    justify-content: center;
 }
 
 .header span {
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 .header span:hover {
     color: rgb(255, 255, 255);
     cursor: pointer;
+}
+
+.header img {
+    height: 40px;
+    width: auto;
 }

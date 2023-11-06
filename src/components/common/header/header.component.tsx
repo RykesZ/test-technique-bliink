@@ -1,6 +1,10 @@
+import logo from "../../../assets/android-chrome-512x512.png"
+
+
 export const Header = () => {
     return (
         <div className="header">
+            <img src={logo} alt="Logo CNN"/>
             <span>US</span>
             <span>World</span>
             <span>Politics</span>

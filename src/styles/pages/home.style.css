@@ -1,3 +1,5 @@
 .home {
-    margin: 50px 40px 0 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }

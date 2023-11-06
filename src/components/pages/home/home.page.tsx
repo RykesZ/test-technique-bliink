@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import NewsService from "../../../services/news.service";
-import { Card } from "../../common/card.component";
+import { Card } from "../../common/card/card.component";
 
 type Article = {
     author: string,
