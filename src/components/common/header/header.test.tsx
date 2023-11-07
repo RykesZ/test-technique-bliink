@@ -2,12 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Header } from './header.component';
 
-const setWindowWidth = (width: number) => {
-  window.innerWidth = width;
-  window.dispatchEvent(new Event('resize'));
-};
-
-test('Test de la visibilité des éléments en fonction de la largeur de la fenêtre', () => {
+test('Header renders logo, burger menu, and tabs correctly', () => {
   render(<Header />);
 
   const logo = screen.queryByTestId('logo');
