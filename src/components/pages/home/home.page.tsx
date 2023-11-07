@@ -18,6 +18,7 @@ export const Home = () => {
     const [newsList, setNewsList] = useState<Array<Article>>([]);
     const [dataRetrieved, setDataRetrieved] = useState(false);
 
+    // Retrieve last news and store them in an array
     useEffect(() => {
         const fetchNews = async () => {
             try {
@@ -32,6 +33,7 @@ export const Home = () => {
         fetchNews();
     }, [])
 
+    // If there is at least 1 news in the news list, data is considered retrieved and said news are displayed
     useEffect(() => {
         newsList.length > 0 ? setDataRetrieved(true) : setDataRetrieved(false);
     }, [newsList]);

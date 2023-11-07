@@ -1,10 +1,9 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 
 export default class NewsService {
     private endPoint: string | undefined;
     private apiKey: string | undefined;
     private country: string | undefined;
-    private toto: string | undefined;
 
     constructor() {
         this.endPoint = "https://newsapi.org/v2/top-headlines";

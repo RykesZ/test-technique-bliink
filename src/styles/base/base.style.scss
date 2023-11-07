@@ -1,0 +1,114 @@
+$cardWidth: 100%;
+$cardMargin: 5px 10px;
+$cardTitle: 1.6em;
+$cardText: 1.2em;
+$homeMargin: 50px 0 0 0;
+
+$breakpoints: (
+    sm: 576px,
+    md: 577px,
+    lg: 991px,
+    xl: 1199px,
+    xxl: 1439px
+);
+
+@mixin cardStyles {
+    width: $cardWidth;
+    margin: $cardMargin;
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    h2 {
+        font-size: $cardTitle;
+    }
+    p {
+        font-size: $cardText;
+    }
+}
+
+@media screen and (max-width: map-get($breakpoints, sm)) {
+    .card {
+        @include cardStyles;
+    }
+    .home {
+        margin: $homeMargin;
+    }
+    .burgerMenu {
+        display: inline;
+    }
+    .tab {
+        display: none;
+    }
+}
+
+@media screen and (min-width: map-get($breakpoints, md)) {
+    .card {
+        @include cardStyles;
+    }
+    .home {
+        margin: $homeMargin;
+    }
+    .burgerMenu {
+        display: inline;
+    }
+    .tab {
+        display: none;
+    }
+}
+
+@media screen and (min-width: map-get($breakpoints, lg)) {
+    .card {
+        width: 70%;
+        img {
+            width: 600px;
+            height: 400px;
+            object-fit: cover;
+        }
+        h2 {
+            font-size: 1.8em;
+        }
+        p {
+            font-size: 1.4em;
+        }
+    }
+    .burgerMenu {
+        display: none;
+    }
+    .tab {
+        display: inline;
+    }
+}
+
+@media screen and (min-width: map-get($breakpoints, xl)) {
+    .card {
+        width: 40%;
+        img {
+            width: 450px;
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+}
+
+@media screen and (min-width: map-get($breakpoints, xxl)) {
+    .card {
+        width: 30%;
+        margin: 5px 20px;
+        h2 {
+            font-size: 1.6em;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        img {
+            width: 350px;
+            height: 233px;
+            object-fit: cover;
+        }
+    }
+    .home {
+        margin: 50px 40px 0 40px;
+    }
+}

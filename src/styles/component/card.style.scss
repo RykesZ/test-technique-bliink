@@ -1,0 +1,38 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    a {
+        text-decoration: none;
+        position: relative;
+        color: rgb(61, 61, 61);
+        transition: color 0.3s, border-bottom 0.3s;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            border-bottom: 2px solid rgb(61, 61, 61);
+            transition: width 0.3s;
+        }
+
+        &:hover {
+            color: black;
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &::before {
+            content: '\2192';
+            display: inline-block;
+            margin-right: 5px;
+        }
+    }
+}
