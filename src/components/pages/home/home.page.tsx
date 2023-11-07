@@ -16,6 +16,7 @@ type Article = {
 export const Home = () => {
 
     const [newsList, setNewsList] = useState<Array<Article>>([]);
+    const [dataRetrieved, setDataRetrieved] = useState(false);
 
     useEffect(() => {
         const fetchNews = async () => {
@@ -23,7 +24,6 @@ export const Home = () => {
                 const newsService = new NewsService();
                 const response = await newsService.getNews();
                 setNewsList(response.data.articles);
-                console.log(response);
             } catch (error) {
                 console.log(error);
             }
@@ -32,15 +32,18 @@ export const Home = () => {
         fetchNews();
     }, [])
 
-    if (newsList.length > 0) {
-        return (
+    useEffect(() => {
+        newsList.length > 0 ? setDataRetrieved(true) : setDataRetrieved(false);
+    }, [newsList]);
+
+    
+        return ( dataRetrieved ?
             <div className="home">
-                    {newsList.map((article, index) =>
+                {newsList.map((article, index) =>
+                    <React.Fragment key={index}>
                         <Card article={article} index={index} />
-                    )}
+                    </React.Fragment>
+                )}
             </div>
-        )
-    } else {
-        return (<div>Oups ! Aucune news n'a été récupérée, réessayez plus tard !</div>)
-    }
+        :<div className="home">Woops! Data can't be retrieved, sorry! Please try again later.</div>)
 }

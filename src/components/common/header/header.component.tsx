@@ -5,17 +5,18 @@ export const Header = () => {
     return (
         <div className="header">
             <img src={logo} alt="Logo CNN"/>
-            <span>US</span>
-            <span>World</span>
-            <span>Politics</span>
-            <span>Business</span>
-            <span>Opinion</span>
-            <span>Health</span>
-            <span>Entertainment</span>
-            <span>Style</span>
-            <span>Travel</span>
-            <span>Sports</span>
-            <span>Video</span>
+            <span className="burgerMenu">&#9776;</span>
+            <span className="tab">US</span>
+            <span className="tab">World</span>
+            <span className="tab">Politics</span>
+            <span className="tab">Business</span>
+            <span className="tab">Opinion</span>
+            <span className="tab">Health</span>
+            <span className="tab">Entertainment</span>
+            <span className="tab">Style</span>
+            <span className="tab">Travel</span>
+            <span className="tab">Sports</span>
+            <span className="tab">Video</span>
         </div>
     )
 }

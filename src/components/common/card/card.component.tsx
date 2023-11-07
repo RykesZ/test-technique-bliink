@@ -18,13 +18,11 @@ type CardProps = {
 
 export const Card = (props: CardProps) => {
     return (
-        <React.Fragment key={props.index}>
             <div className="card">
                 <h2>{props.article.title}</h2>
                 <img src={props.article.urlToImage} alt={props.article.description}/>
                 <p>{props.article.description}</p>
                 <a href={props.article.url}>Read full article</a><br />
             </div>
-        </React.Fragment>
     )
 }
