@@ -1,9 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Header } from './header.component';
+import { MemoryRouter } from 'react-router-dom';
 
 test('Header renders logo, burger menu, and tabs correctly', () => {
-  render(<Header />);
+  render(
+  <MemoryRouter>
+    <Header />
+  </MemoryRouter>)
 
   const logo = screen.queryByTestId('logo');
   expect(logo).toBeInTheDocument();

@@ -1,10 +1,13 @@
 import logo from "../../../assets/android-chrome-512x512.png"
+import { Link } from "react-router-dom"
 
 
 export const Header = () => {
     return (
         <div className="header">
-            <img src={logo} alt="Logo CNN" data-testid="logo"/>
+            <Link to={"/"}>
+                <img src={logo} alt="Logo CNN" data-testid="logo"/>
+            </Link>
             <span className="burgerMenu" data-testid="burgerMenu">&#9776;</span>
             <span className="tab" data-testid="tab1">US</span>
             <span className="tab" data-testid="tab2">World</span>

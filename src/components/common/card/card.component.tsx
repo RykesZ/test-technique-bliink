@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useArticleContext } from "../../../services/articleContext"
+import { useNavigate } from "react-router-dom"
 
 type Article = {
     author: string,
     content: string,
     description: string,
-    publishedAt: Date,
+    publishedAt: string,
     source: {id: string, name: string},
     title: string,
     url: string,
@@ -17,12 +19,26 @@ type CardProps = {
 }
 
 export const Card = (props: CardProps) => {
+    const { setSelectedArticle, selectedArticle } = useArticleContext();
+    const navigate = useNavigate();
+
+    const handleReadArticle = () => {
+        setSelectedArticle(props.article);
+    }
+
+    useEffect(() => {
+        if (selectedArticle) {
+            navigate("/article");
+        }
+    }, [selectedArticle, navigate])
+
+
     return (
             <div className="card">
                 <h2>{props.article.title}</h2>
                 <img src={props.article.urlToImage} alt={props.article.description}/>
                 <p>{props.article.description}</p>
-                <a href={props.article.url}>Read full article</a><br />
+                <button onClick={() => handleReadArticle()}>Read full article</button>
             </div>
     )
 }

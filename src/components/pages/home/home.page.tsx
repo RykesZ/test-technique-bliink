@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import NewsService from "../../../services/news.service";
 import { Card } from "../../common/card/card.component";
+import { useArticleContext } from "../../../services/articleContext"
 
 type Article = {
     author: string,
     content: string,
     description: string,
-    publishedAt: Date,
+    publishedAt: string,
     source: {id: string, name: string},
     title: string,
     url: string,
@@ -17,6 +18,7 @@ export const Home = () => {
 
     const [newsList, setNewsList] = useState<Array<Article>>([]);
     const [dataRetrieved, setDataRetrieved] = useState(false);
+    const { setSelectedArticle } = useArticleContext();
 
     // Retrieve last news and store them in an array
     useEffect(() => {
@@ -32,6 +34,11 @@ export const Home = () => {
 
         fetchNews();
     }, [])
+
+    // Reset selectedArticle when loading Home
+    useEffect(() => {
+        setSelectedArticle(null);
+    }, [setSelectedArticle])
 
     // If there is at least 1 news in the news list, data is considered retrieved and said news are displayed
     useEffect(() => {

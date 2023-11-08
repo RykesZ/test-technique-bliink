@@ -1,0 +1,58 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { ReadArticle } from './readArticle.page';
+import { ArticleProvider, useArticleContext } from '../../../services/articleContext';
+import convertDateService from '../../../services/convertDate.service';
+
+describe('ReadArticle', () => {
+  it('renders "Article not found" when selectedArticle is null', () => {
+    const { setSelectedArticle } = useArticleContext();
+    setSelectedArticle(null);
+    render(
+      <ArticleProvider >
+        <ReadArticle />
+      </ArticleProvider>
+    );
+
+    const articleNotFoundText = screen.getByText('Article not found');
+    expect(articleNotFoundText).toBeInTheDocument();
+  });
+
+  it('renders the selected article details when selectedArticle is not null', () => {
+    const selectedArticle = {
+        author: "Jean Jean",
+        content: "Content of the article",
+        description: "Description of the article",
+        publishedAt: "2023-11-07T16:29:43Z",
+        source: {id: "id of the article source", name: "name of the article source"},
+        title: "Title of the article",
+        url: "url to the article",
+        urlToImage: "url to the article image"
+    };
+
+    const { setSelectedArticle } = useArticleContext();
+    setSelectedArticle(selectedArticle);
+
+    render(
+      <ArticleProvider >
+        <ReadArticle />
+      </ArticleProvider>
+    );
+
+    // Assertions for selected article details
+    const titleElement = screen.getByText('Title of the article');
+    expect(titleElement).toBeInTheDocument();
+
+    const publishInfoElement = screen.getByText(
+      `Published at : ${convertDateService.formatDateToCustomString(selectedArticle.publishedAt)} on name of the article source by Jean Jean`
+    );
+    expect(publishInfoElement).toBeInTheDocument();
+
+    const imageElement = screen.getByAltText('Description of the article');
+    expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toHaveAttribute('src', 'url to the article image');
+
+    const contentElement = screen.getByText('Content of the article');
+    expect(contentElement).toBeInTheDocument();
+  });
+});
